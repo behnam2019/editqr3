@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    <title>GeoJSON tutorial - Leaflet</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="js/leaflet.js"></script>
+
+
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+
+
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+}
+
+.button3:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.button4 {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+}
+</style>
+
+
+    </style>
+
+    
+</head>
+<body>
+ <div class="app">
+        <h1>barcode khan</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+            <button onclick="barcodescanner()"> scan </button>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+<script type="text/javascript">
+
+function barcodescanner(){
+
+
+
+ cordova.plugins.barcodeScanner.scan(
+      function (result) {
+        //  alert("We got a barcode\n" +
+          //      "Result: " + result.text + "\n" +
+              //  "Format: " + result.format + "\n" +
+            //    "Cancelled: " + result.cancelled);
+      if (result.text="behnam1") {
+L.marker([35.724885, 51.388256]).addTo(map);
+
+function path1() {
+var latlngs = [
+    [35.724781, 51.387998],
+    [35.724975, 51.388428],
+    [35.724955, 51.388328]
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+
+//map.fitBounds(polyline.getBounds());
+
+};
+// zoom the map to the polyline
+
+
+
+
+      }
+      },
+      function (error) {
+          alert("Scanning failed: " + error);
+      },
+      {
+          preferFrontCamera : false, // iOS and Android
+          showFlipCameraButton : true, // iOS and Android
+          showTorchButton : true, // iOS and Android
+          torchOn: false, // Android, launch with the torch switched on (if available)
+          prompt : "بارکد را جلوی دوربین نگه دارید", // Android
+          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+          //orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+          disableAnimations : true, // iOS
+          disableSuccessBeep: false // iOS
+      }
+   );
+    
+}
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+
+</script>
+
+
+<button onclick="path1()" class="button button1">Green</button></br>
+<button class="button button2">Blue</button></br>
+<button class="button button3">Red</button></br>
+<button class="button button4">Gray</button></br>
+<button class="button button5">Black</button>
+
+
+<div id='map'></div>
+
+
+<script>
+    var map = L.map('map').setView([39.74739, -105], 21);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 24,
+        maxNativeZoom: 19,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.light'
+    }).addTo(map);
+
+  
+//L.marker([35.724885, 51.388256]).addTo(map);
+
+//L.imageOverlay(url, imageBounds).addTo(map);
+var imageUrl = 'faculty.jpg',
+    imageBounds = [[35.724781, 51.387998], [35.724975, 51.388428]];
+L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+
+//var arrow = L.polyline([[35.724781, 51.387998], [35.724975, 51.388428]]).addTo(map);
+
+map.setMaxBounds(imageBounds);
+
+
+</script>
+
+
+
+
+</body>
+</html>
