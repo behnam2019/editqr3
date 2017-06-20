@@ -9,12 +9,12 @@ function barcodescanner(){
               //  "Format: " + result.format + "\n" +
             //    "Cancelled: " + result.cancelled);
       if (result.text=="behnam1") {
-      window.open("index2.html", 'newwindow');
+      window.open("index2.html");
 
       }
        
        if (result.text=="behnam2") {
-window.open("index3.html", 'newwindow');
+window.open("index3.html");
 
       }
       },
