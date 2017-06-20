@@ -8,12 +8,12 @@ function barcodescanner(){
           //      "Result: " + result.text + "\n" +
               //  "Format: " + result.format + "\n" +
             //    "Cancelled: " + result.cancelled);
-      if (result.text="behnam1") {
+      if (result.text="sara") {
 window.open("index2.html");
 
       }
        
-       if (result.text="behnam2") {
+       if (result.text="sarae") {
 window.open("index3.html");
 
       }
