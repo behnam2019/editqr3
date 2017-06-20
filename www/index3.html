@@ -3,35 +3,59 @@
 <head>
     
 
+
     <title>GeoJSON tutorial - Leaflet</title>
 
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content='dth=device-width, initial-scale=1.0 , user-scalable=no'>
     
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+<meta  content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+
+
+
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <script src="js/leaflet.js"></script>
 
 
     <style>
-        #map {
-            width: 600px;
-            height: 400px;
+
+
+
+       #map {
+            position:absolute; 
+           
+          /*  left:20%;
+            right: 30%
+            top:50%;*/
+
+             width: 100%;
+            height: 70%;
+
         }
 
-
+.leaflet-popup-content {
+    height: 3px;
+}
 <style>
+
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
+    position: absolute;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 2px 4px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -40,7 +64,7 @@
 .button1 {
     background-color: white; 
     color: black; 
-    border: 2px solid #4CAF50;
+    border: 4px solid #4CAF50;
 }
 
 .button1:hover {
@@ -51,7 +75,7 @@
 .button2 {
     background-color: white; 
     color: black; 
-    border: 2px solid #008CBA;
+    border: 4px solid #008CBA;
 }
 
 .button2:hover {
@@ -62,7 +86,7 @@
 .button3 {
     background-color: white; 
     color: black; 
-    border: 2px solid #f44336;
+    border: 4px solid #f44336;
 }
 
 .button3:hover {
@@ -73,7 +97,7 @@
 .button4 {
     background-color: white;
     color: black;
-    border: 2px solid #e7e7e7;
+    border: 4px solid #e7e7e7;
 }
 
 .button4:hover {background-color: #e7e7e7;}
@@ -81,21 +105,220 @@
 .button5 {
     background-color: white;
     color: black;
-    border: 2px solid #555555;
+    border: 4px solid #555555;
 }
 
 .button5:hover {
     background-color: #555555;
     color: white;
 }
+
+.button6 {
+    background-color: white;
+    color: black;
+    border: 4px solid #7FFF00;
+}
+
+.button6:hover {
+    background-color: #7FFF00;
+    color: white;
+}
+
+.button7 {
+    background-color: white;
+    color: black;
+    border: 4px solid #00FFFF;
+}
+
+.button7:hover {
+    background-color: #00FFFF;
+    color: white;
+}
+
+.button8 {
+    background-color: white;
+    color: black;
+    border: 4px solid #8B008B;
+}
+
+.button8:hover {
+    background-color: #8B008B;
+    color: white;
+}
+
+.button9 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FF1493;
+}
+
+.button9:hover {
+    background-color: #FF1493;
+    color: white;
+}
+
+.button10 {
+    background-color: white;
+    color: black;
+    border: 4px solid #8B0000;
+}
+
+.button10:hover {
+    background-color: #8B0000;
+    color: white;
+}
+
+.button11 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FFA500;
+}
+
+.button11:hover {
+    background-color: #FFA500;
+    color: white;
+}
+
+.button12 {
+    background-color: white;
+    color: black;
+    border: 4px solid #555555;
+}
+
+.button12:hover {
+    background-color: #FFFAFA;
+    color: black;
+}
+
+.button13 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FFFAFA;
+}
+
+.button13:hover {
+    background-color: #FFFF00;
+    color: white;
+}
+
+.button14 {
+    background-color: white;
+    color: black;
+    border: 4px solid #00FF00;
+}
+
+.button14:hover {
+    background-color: #00FF00;
+    color: white;
+}
+
+.button15 {
+    background-color: white;
+    color: black;
+    border: 4px solid red;
+}
+
+.button15:hover {
+    background-color: red;
+    color: white;
+}
+
 </style>
 
 
-    </style>
+<div id="main">
+  
 
-    
+
+<span style="font-size:20px;cursor:pointer;" onclick="openNav()"><div style="text-align: right;"> ☰</div></span>
+</div>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav button {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+    right: 0;
+
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+
+#main {
+    transition: margin-right .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+
+
+
 </head>
 <body>
+
+
+
+
+
+
+
+
+
+
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+<!--[if lt IE 9]>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.ie.css' rel='stylesheet' />
+<![endif]-->
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+
+
+
+
  <div class="app">
         <h1>barcode khan</h1>
         <div id="deviceready" class="blink">
@@ -124,8 +347,8 @@ function barcodescanner(){
             //    "Cancelled: " + result.cancelled);
       if (result.text="behnam1") {
 L.marker([35.724885, 51.388256]).addTo(map);
-window.open('index2.html');
-          
+window.open("https://www.w3schools.com");
+
 function path1() {
 var latlngs = [
     [35.724781, 51.387998],
@@ -198,20 +421,15 @@ var app = {
 </script>
 
 
-<button onclick="path1()" class="button button1">Green</button></br>
-<button class="button button2">Blue</button></br>
-<button class="button button3">Red</button></br>
-<button class="button button4">Gray</button></br>
-<button class="button button5">Black</button>
 
 
 <div id='map'></div>
 
 
 <script>
-    var map = L.map('map').setView([39.74739, -105], 21);
+    var map = L.map('map').setView([35.724878, 51.388213], 20);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+  /*  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 24,
         maxNativeZoom: 19,
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -219,23 +437,854 @@ var app = {
             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
         id: 'mapbox.light'
     }).addTo(map);
-
+*/
   
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    maxZoom: 24,
+    maxNativeZoom: 19,
+    //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+
+}).addTo(map);
+
 //L.marker([35.724885, 51.388256]).addTo(map);
 
 //L.imageOverlay(url, imageBounds).addTo(map);
+
 var imageUrl = 'faculty.jpg',
-    imageBounds = [[35.724781, 51.387998], [35.724975, 51.388428]];
-L.imageOverlay(imageUrl, imageBounds).addTo(map);
+    imageBounds = [[35.724720, 51.388020], [35.724915, 51.388448]];
+
+//L.imageOverlay(imageUrl, imageBounds).addTo(map);
 
 
 //var arrow = L.polyline([[35.724781, 51.387998], [35.724975, 51.388428]]).addTo(map);
 
-map.setMaxBounds(imageBounds);
+//map.setMaxBounds(imageBounds);
+   L.control.locate().addTo(map);
+
+L.marker([35.72441, 51.38833]).addTo(map);
+
+
+
+function class1() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72481, 51.38837]
+];
+var polyline = L.polyline(latlngs, {color: 'Green'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72478, 51.38841])
+    .setContent('کلاس ۱')
+    .openOn(map);
+
+//map.fitBounds(polyline.getBounds());
+};
+
+function class2() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38832],
+    [35.72469, 51.38832],
+    [35.72469, 51.38837]
+];
+var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72467, 51.38841])
+    .setContent('کلاس ۲')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function class3() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.38833],
+    [35.72460, 51.38833],
+    [35.72460, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72457, 51.38841])
+    .setContent('کلاس ۳')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
+
+function class4() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38834],
+    [35.72450, 51.38834],
+    [35.72450, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'grey'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72445, 51.38841])
+    .setContent('کلاس ۴')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function class5() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38835],
+    [35.72469, 51.38835],
+    [35.72439, 51.38835],
+    [35.72439, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'black'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72436, 51.38841])
+    .setContent('کلاس ۵')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function elev() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38836],
+    [35.72469, 51.38836],
+    [35.72430, 51.38836],
+    [35.72430, 51.38844],
+
+];
+var polyline = L.polyline(latlngs, {color: '#00FF00'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72431, 51.38844])
+    .setContent('آسانسور')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function anbar() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38835],
+    ];
+var polyline = L.polyline(latlngs, {color: '#FFFF00'}).addTo(map);
+
+var popup = L.popup()
+    .setLatLng([35.72487, 51.38836])
+    .setContent('انبار تجهیزات')
+    .openOn(map);
+
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function anjoman() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38831],
+];
+var polyline = L.polyline(latlngs, {color: '#00FFFF'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38831])
+    .setContent('انجمن علمی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+function amoozesh() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38822],
+
+];
+var polyline = L.polyline(latlngs, {color: '#7FFF00'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38822])
+    .setContent('آموزش دانشکده')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function asatid() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38815],
+
+];
+var polyline = L.polyline(latlngs, {color: '#8B008B'}).addTo(map);
+
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38815])
+    .setContent('اتاق اساتید')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function ab() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38810],
+
+];
+
+var polyline = L.polyline(latlngs, {color: '#FF1493'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38810])
+    .setContent('آبدارخانه')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+function wc() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72484, 51.38808],
+
+];
+
+var polyline = L.polyline(latlngs, {color: '#FFFAFA'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72486, 51.38805])
+    .setContent('سرویس بهداشتی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function exit() {
+var latlngs = [
+    [35.72477, 51.3882],
+    [35.72477, 51.38823],
+    [35.72473, 51.38823]
+];
+
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72472, 51.38825])
+    .setContent('Exit')
+    .openOn(map);
+
+};
+
+
+function sitek() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.38831],
+    [35.72458, 51.38831],
+    [35.72458, 51.38830],
+];
+var polyline = L.polyline(latlngs, {color: '#8B0000'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72457, 51.38826])
+    .setContent('سایت کارشناسی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
+
+function siters() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.388315],
+    [35.72451, 51.388315],
+    [35.72451, 51.38830],
+];
+var polyline = L.polyline(latlngs, {color: '#FFA500'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72447, 51.38823])
+    .setContent('RS سایت')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
+   /* function onLocationFound(e) {
+        var radius = e.accuracy / 2;
+
+        L.marker(e.latlng).addTo(map)
+            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);
+    }
+
+   function onLocationError(e) {
+        alert(e.message);
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+   // map.locate({setView: true, maxZoom: 16});*/
 
 
 </script>
 
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   
+ <button onclick="class1()" class="button button1">کلاس ۱</button>
+<button onclick="class2()" class="button button2">کلاس ۲</button>
+<button onclick="class3()" class="button button3">کلاس ۳</button>
+<button onclick="class4()" class="button button4">کلاس ۴</button>
+<button onclick="class5()" class="button button5">کلاس ۵</button>
+<button onclick="amoozesh()" class="button button6">آموزش</button>
+<button onclick="anjoman()" class="button button7">انجمن علمی</button>
+<button onclick="asatid()" class="button button8">اساتید مدعو</button>
+<button onclick="ab()" class="button button9">آبدار خانه</button>
+<button onclick="sitek()" class="button button10">سایت کارشناسی</button>
+<button onclick="siters()" class="button button11">سایت سنجش از دور</button>
+<button onclick="wc()" class="button button12">سرویس بهداشتی</button>
+<button onclick="anbar()" class="button button13">انبار تجهیزات</button>
+<button onclick="elev()" class="button button14">آسانسور</button>
+<button onclick="exit()" class="button button15">خروجی</button>
+<button class="button button13">Black</button>
+</div>
+
+
+<div id="main">
+
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100px";
+    document.getElementById("main").style.marginLeft = "100px";
+        document.getElementById("map").style.width = "75%";
+
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+            document.getElementById("map").style.width = "100%";
+
+}
+</script>
+
+  
+</div>
+     
+
+
+
+<!--
+<svg class="leaflet-zoom-animated" width="594" height="898" viewBox="136 -119 594 898" style="transform: translate3d(136px, -119px, 0px);"><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M432 320L454 320L454 261L432 261z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M413 260L454 260L454 235L413 235z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M432 366L452 366L452 321L432 321z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M432 412L451 412L451 366L432 366z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M432 457L451 457L451 410L432 410z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M432 500L452 500L452 457L432 457z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M355 403L407 403L407 368L355 368z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M357 441L406 441L406 407L357 407z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M362 257L393 259L394 235L362 235z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M341 257L361 257L361 236L341 236z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M322 256L340 256L340 236L322 236z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M304 269L321 269L321 236L304 236z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M304 314L369 314L369 300L304 300z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M388 316L405 316L405 299L388 299z"></path></g><g><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#555555" stroke-opacity="1" stroke-width="2" fill="#555555" fill-opacity="0.5" class="leaflet-clickable" d="M395 260L413 260L413 235L395 235z"></path></g></svg>
+
+
+
+-->
+
+<script type="text/javascript">
+L.geoJSON({
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388375461101525,
+              35.72452246857037
+            ],
+            [
+              51.38842642307281,
+              35.72452246857037
+            ],
+            [
+              51.38842642307281,
+              35.724622633859944
+            ],
+            [
+              51.388375461101525,
+              35.724622633859944
+            ],
+            [
+              51.388375461101525,
+              35.72452246857037
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388375461101525,
+              35.72433084766549
+            ],
+            [
+              51.38842910528183,
+              35.72433084766549
+            ],
+            [
+              51.38842910528183,
+              35.72442448066522
+            ],
+            [
+              51.388375461101525,
+              35.72442448066522
+            ],
+            [
+              51.388375461101525,
+              35.72433084766549
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388168931007385,
+              35.72454206613693
+            ],
+            [
+              51.38830840587616,
+              35.72454206613693
+            ],
+            [
+              51.38830840587616,
+              35.724618278849945
+            ],
+            [
+              51.388168931007385,
+              35.724618278849945
+            ],
+            [
+              51.388168931007385,
+              35.72454206613693
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.38817429542541,
+              35.7244593208231
+            ],
+            [
+              51.38830572366714,
+              35.7244593208231
+            ],
+            [
+              51.38830572366714,
+              35.72453335610793
+            ],
+            [
+              51.38817429542541,
+              35.72453335610793
+            ],
+            [
+              51.38817429542541,
+              35.7244593208231
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.38813138008118,
+              35.72485998154326
+            ],
+            [
+              51.38818502426147,
+              35.72485998154326
+            ],
+            [
+              51.38818502426147,
+              35.72490570899734
+            ],
+            [
+              51.38813138008118,
+              35.72490570899734
+            ],
+            [
+              51.38813138008118,
+              35.72485998154326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388080418109894,
+              35.724862159041685
+            ],
+            [
+              51.38812869787216,
+              35.724862159041685
+            ],
+            [
+              51.38812869787216,
+              35.72490570899734
+            ],
+            [
+              51.388080418109894,
+              35.72490570899734
+            ],
+            [
+              51.388080418109894,
+              35.724862159041685
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388032138347626,
+              35.72483385155773
+            ],
+            [
+              51.38807773590088,
+              35.72483385155773
+            ],
+            [
+              51.38807773590088,
+              35.72490570899734
+            ],
+            [
+              51.388032138347626,
+              35.72490570899734
+            ],
+            [
+              51.388032138347626,
+              35.72483385155773
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388032138347626,
+              35.7247358640356
+            ],
+            [
+              51.388206481933594,
+              35.7247358640356
+            ],
+            [
+              51.388206481933594,
+              35.7247663490554
+            ],
+            [
+              51.388032138347626,
+              35.7247663490554
+            ],
+            [
+              51.388032138347626,
+              35.7247358640356
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.38825744390488,
+              35.72473150903182
+            ],
+            [
+              51.38830304145813,
+              35.72473150903182
+            ],
+            [
+              51.38830304145813,
+              35.72476852655637
+            ],
+            [
+              51.38825744390488,
+              35.72476852655637
+            ],
+            [
+              51.38825744390488,
+              35.72473150903182
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388375461101525,
+              35.72463134387916
+            ],
+            [
+              51.38842910528183,
+              35.72463134387916
+            ],
+            [
+              51.38842910528183,
+              35.72471626651671
+            ],
+            [
+              51.388375461101525,
+              35.72471626651671
+            ],
+            [
+              51.388375461101525,
+              35.72463134387916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388375461101525,
+              35.72443319070612
+            ],
+            [
+              51.38842910528183,
+              35.72443319070612
+            ],
+            [
+              51.38842910528183,
+              35.7245115810313
+            ],
+            [
+              51.388375461101525,
+              35.7245115810313
+            ],
+            [
+              51.388375461101525,
+              35.72443319070612
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388375461101525,
+              35.7247249765257
+            ],
+            [
+              51.38842910528183,
+              35.7247249765257
+            ],
+            [
+              51.38842910528183,
+              35.724844739052756
+            ],
+            [
+              51.388375461101525,
+              35.724844739052756
+            ],
+            [
+              51.388375461101525,
+              35.7247249765257
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388332545757294,
+              35.724857804044795
+            ],
+            [
+              51.38842910528183,
+              35.724857804044795
+            ],
+            [
+              51.38842910528183,
+              35.72490788649451
+            ],
+            [
+              51.388332545757294,
+              35.72490788649451
+            ],
+            [
+              51.388332545757294,
+              35.724857804044795
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.38828158378601,
+              35.72485998154326
+            ],
+            [
+              51.38832449913025,
+              35.72485998154326
+            ],
+            [
+              51.38832449913025,
+              35.72490788649451
+            ],
+            [
+              51.38828158378601,
+              35.72490788649451
+            ],
+            [
+              51.38828158378601,
+              35.72485998154326
+            ]
+          ]
+        ]
+      }
+    }
+,
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388431787490845,
+              35.72430253999275
+            ],
+            [
+              51.388453245162964,
+              35.72430253999275
+            ],
+            [
+              51.388453245162964,
+              35.724319960100246
+            ],
+            [
+              51.388431787490845,
+              35.724319960100246
+            ],
+            [
+              51.388431787490845,
+              35.72430253999275
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              51.388190388679504,
+              35.724862159041685
+            ],
+            [
+              51.388278901576996,
+              35.724862159041685
+            ],
+            [
+              51.388278901576996,
+              35.72490570899734
+            ],
+            [
+              51.388190388679504,
+              35.72490570899734
+            ],
+            [
+              51.388190388679504,
+              35.724862159041685
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}, {
+    style: function (feature) {
+        return {color: feature.properties.color};
+    }
+}).bindPopup(function (layer) {
+    return layer.feature.properties.description;
+}).addTo(map);
+    
+
+</script>
 
 
 
