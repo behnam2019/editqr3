@@ -8,9 +8,9 @@ function barcodescanner(){
           //      "Result: " + result.text + "\n" +
               //  "Format: " + result.format + "\n" +
             //    "Cancelled: " + result.cancelled);
-      if (result.text="behnam") {
-L.marker([35.724885, 51.388256]).addTo(map);
-
+      if (result.text="behnam1") {
+//L.marker([35.724885, 51.388256]).addTo(map);
+window.open("index2.html");
 
       }
       },
