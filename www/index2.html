@@ -39,8 +39,12 @@
 
         }
 
-
+.leaflet-popup-content {
+    height: 3px;
+}
 <style>
+
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -108,18 +112,118 @@
     background-color: #555555;
     color: white;
 }
+
+.button6 {
+    background-color: white;
+    color: black;
+    border: 4px solid #7FFF00;
+}
+
+.button6:hover {
+    background-color: #7FFF00;
+    color: white;
+}
+
+.button7 {
+    background-color: white;
+    color: black;
+    border: 4px solid #00FFFF;
+}
+
+.button7:hover {
+    background-color: #00FFFF;
+    color: white;
+}
+
+.button8 {
+    background-color: white;
+    color: black;
+    border: 4px solid #8B008B;
+}
+
+.button8:hover {
+    background-color: #8B008B;
+    color: white;
+}
+
+.button9 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FF1493;
+}
+
+.button9:hover {
+    background-color: #FF1493;
+    color: white;
+}
+
+.button10 {
+    background-color: white;
+    color: black;
+    border: 4px solid #8B0000;
+}
+
+.button10:hover {
+    background-color: #8B0000;
+    color: white;
+}
+
+.button11 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FFA500;
+}
+
+.button11:hover {
+    background-color: #FFA500;
+    color: white;
+}
+
+.button12 {
+    background-color: white;
+    color: black;
+    border: 4px solid #555555;
+}
+
+.button12:hover {
+    background-color: #FFFAFA;
+    color: black;
+}
+
+.button13 {
+    background-color: white;
+    color: black;
+    border: 4px solid #FFFAFA;
+}
+
+.button13:hover {
+    background-color: #FFFF00;
+    color: white;
+}
+
+.button14 {
+    background-color: white;
+    color: black;
+    border: 4px solid #00FF00;
+}
+
+.button14:hover {
+    background-color: #00FF00;
+    color: white;
+}
+
+.button15 {
+    background-color: white;
+    color: black;
+    border: 4px solid red;
+}
+
+.button15:hover {
+    background-color: red;
+    color: white;
+}
+
 </style>
-
-
-
-
-
-
-    
-
-
-
-
 
 
 <div id="main">
@@ -134,7 +238,7 @@ body {
 }
 
 .sidenav {
-    height: 70%;
+    height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -167,12 +271,14 @@ body {
 
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
+    right: 0;
+
 }
 
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 0px;
     font-size: 36px;
     margin-right: 50px;
 }
@@ -336,7 +442,7 @@ var app = {
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     maxZoom: 24,
     maxNativeZoom: 19,
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    //attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
 }).addTo(map);
 
@@ -369,15 +475,238 @@ function onMapClick(e) {
 map.on('click', onMapClick);
 
 
+function class1() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72481, 51.38837]
+];
+var polyline = L.polyline(latlngs, {color: 'Green'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72478, 51.38841])
+    .setContent('کلاس ۱')
+    .openOn(map);
+
+//map.fitBounds(polyline.getBounds());
+};
+
+function class2() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38832],
+    [35.72469, 51.38832],
+    [35.72469, 51.38837]
+];
+var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72467, 51.38841])
+    .setContent('کلاس ۲')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function class3() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.38833],
+    [35.72460, 51.38833],
+    [35.72460, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72457, 51.38841])
+    .setContent('کلاس ۳')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
+
+function class4() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38834],
+    [35.72450, 51.38834],
+    [35.72450, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'grey'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72445, 51.38841])
+    .setContent('کلاس ۴')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function class5() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38835],
+    [35.72469, 51.38835],
+    [35.72439, 51.38835],
+    [35.72439, 51.38837],
+];
+var polyline = L.polyline(latlngs, {color: 'black'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72436, 51.38841])
+    .setContent('کلاس ۵')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function elev() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72477, 51.38836],
+    [35.72469, 51.38836],
+    [35.72430, 51.38836],
+    [35.72430, 51.38844],
+
+];
+var polyline = L.polyline(latlngs, {color: '#00FF00'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72431, 51.38844])
+    .setContent('آسانسور')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function anbar() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38835],
+    ];
+var polyline = L.polyline(latlngs, {color: '#FFFF00'}).addTo(map);
+
+var popup = L.popup()
+    .setLatLng([35.72487, 51.38836])
+    .setContent('انبار تجهیزات')
+    .openOn(map);
+
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function anjoman() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38831],
+];
+var polyline = L.polyline(latlngs, {color: '#00FFFF'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38831])
+    .setContent('انجمن علمی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+function amoozesh() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38822],
+
+];
+var polyline = L.polyline(latlngs, {color: '#7FFF00'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38822])
+    .setContent('آموزش دانشکده')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function asatid() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38815],
+
+];
+var polyline = L.polyline(latlngs, {color: '#8B008B'}).addTo(map);
+
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38815])
+    .setContent('اتاق اساتید')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function ab() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72486, 51.38810],
+
+];
+
+var polyline = L.polyline(latlngs, {color: '#FF1493'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72488, 51.38810])
+    .setContent('آبدارخانه')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+function wc() {
+var latlngs = [
+    [35.72477, 51.38820],
+    [35.72484, 51.38808],
+
+];
+
+var polyline = L.polyline(latlngs, {color: '#FFFAFA'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72486, 51.38805])
+    .setContent('سرویس بهداشتی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+
+};
+
+function exit() {
+var latlngs = [
+    [35.72477, 51.3882],
+    [35.72477, 51.38823],
+    [35.72473, 51.38823]
+];
+
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72472, 51.38825])
+    .setContent('Exit')
+    .openOn(map);
+
+};
 
 
+function sitek() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.38831],
+    [35.72458, 51.38831],
+    [35.72458, 51.38830],
+];
+var polyline = L.polyline(latlngs, {color: '#8B0000'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72457, 51.38826])
+    .setContent('سایت کارشناسی')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
 
-
-
-
-
-
-
+function siters() {
+var latlngs = [
+    [35.72477, 51.388200],
+    [35.72477, 51.388315],
+    [35.72451, 51.388315],
+    [35.72451, 51.38830],
+];
+var polyline = L.polyline(latlngs, {color: '#FFA500'}).addTo(map);
+var popup = L.popup()
+    .setLatLng([35.72447, 51.38823])
+    .setContent('RS سایت')
+    .openOn(map);
+//map.fitBounds(polyline.getBounds());
+};
    /* function onLocationFound(e) {
         var radius = e.accuracy / 2;
 
@@ -399,28 +728,25 @@ map.on('click', onMapClick);
 
 </script>
 
-
-
-
-
-
-
-
-
-
-
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <span style="font-size:20px;cursor:pointer;" onclick="openNav()"><div style="text-align: right;"> indoor</div></span>
-  <a href="http://alef.ir">About</a>
-  
- <button onclick="path1()" class="button button1">Green</button></br>
-<button class="button button2">Blue</button></br>
-<button class="button button3">Red</button></br>
-<button class="button button4">Gray</button></br>
-<button class="button button5">Black</button>
-
-
+   
+ <button onclick="class1()" class="button button1">کلاس ۱</button>
+<button onclick="class2()" class="button button2">کلاس ۲</button>
+<button onclick="class3()" class="button button3">کلاس ۳</button>
+<button onclick="class4()" class="button button4">کلاس ۴</button>
+<button onclick="class5()" class="button button5">کلاس ۵</button>
+<button onclick="amoozesh()" class="button button6">آموزش</button>
+<button onclick="anjoman()" class="button button7">انجمن علمی</button>
+<button onclick="asatid()" class="button button8">اساتید مدعو</button>
+<button onclick="ab()" class="button button9">آبدار خانه</button>
+<button onclick="sitek()" class="button button10">سایت کارشناسی</button>
+<button onclick="siters()" class="button button11">سایت سنجش از دور</button>
+<button onclick="wc()" class="button button12">سرویس بهداشتی</button>
+<button onclick="anbar()" class="button button13">انبار تجهیزات</button>
+<button onclick="elev()" class="button button14">آسانسور</button>
+<button onclick="exit()" class="button button15">خروجی</button>
+<button class="button button13">Black</button>
 </div>
 
 
@@ -430,8 +756,8 @@ map.on('click', onMapClick);
 
 <script>
 function openNav() {
-    document.getElementById("mySidenav").style.width = "110px";
-    document.getElementById("main").style.marginLeft = "110px";
+    document.getElementById("mySidenav").style.width = "100px";
+    document.getElementById("main").style.marginLeft = "100px";
         document.getElementById("map").style.width = "75%";
 
 }
