@@ -13,6 +13,12 @@ function barcodescanner(){
 window.open("index2.html");
 
       }
+       
+       if (result.text="behnam2") {
+//L.marker([35.72441, 51.38833]).addTo(map);
+window.open("index3.html");
+
+      }
       },
       function (error) {
           alert("Scanning failed: " + error);
