@@ -462,17 +462,6 @@ var imageUrl = 'faculty.jpg',
 
 L.marker([35.72477, 51.388200]).addTo(map);
 
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-}
-
-map.on('click', onMapClick);
-
 
 function class1() {
 var latlngs = [
