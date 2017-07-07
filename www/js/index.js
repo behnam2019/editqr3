@@ -9,7 +9,7 @@ function barcodescanner(){
               //  "Format: " + result.format + "\n" +
             //    "Cancelled: " + result.cancelled);
       if (result.text=="behnam1") {
-      window.open("index2.html");
+      window.open("http://ems.ut.ac.ir/fa");
 
       }
        
