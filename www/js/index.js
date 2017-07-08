@@ -19,7 +19,7 @@ window.open("index3.html");
       }
        
           if (result.text=="behnam3") {
-window.open("https://auth.ut.ac.ir:8443/cas/login?service=https://ems1.ut.ac.ir/forms/casauthenticateuser/casmu.aspx?ut=1%26CSURL=https://auth.ut.ac.ir:8443/cas/logout");
+window.open("https://ie10.ieonchrome.com/#https://auth.ut.ac.ir:8443/cas/login?service=https://ems1.ut.ac.ir/forms/casauthenticateuser/casmu.aspx?ut=1%26CSURL=https://auth.ut.ac.ir:8443/cas/logout");
 
       }
       },
